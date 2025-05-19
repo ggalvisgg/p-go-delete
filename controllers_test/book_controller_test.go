@@ -54,4 +54,5 @@ func TestDeleteBook_Error(t *testing.T) {
 
 	assert.Equal(t, http.StatusInternalServerError, resp.Code)
 	mockService.AssertExpectations(t)
+    //COMENTAR ESTO
 }
