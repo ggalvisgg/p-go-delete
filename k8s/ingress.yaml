@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: p-go-delete-ingress
+  namespace: delete-books
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /books/$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: centralix.local
+      http:
+        paths:
+          - path: /books(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: p-go-delete-service
+                port:
+                  number: 80
+
+
